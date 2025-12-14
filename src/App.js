@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import { getTheme } from "./theme";
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
 
-function App() {
+const Dashboard = React.lazy(() => import("./pages/Dashboard"));
+const Users = React.lazy(() => import("./pages/Users"));
+const Settings = React.lazy(() => import("./pages/Settings"));
+
+export default function App() {
+  const [mode, setMode] = useState("light");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={getTheme(mode)}>
+      <CssBaseline />
+      <Navbar mode={mode} setMode={setMode} />
+      <Sidebar />
+      <Suspense fallback={<p style={{ margin: 20 }}>Loading...</p>}>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/settings" element={<Settings />} />
+        </Routes>
+      </Suspense>
+    </ThemeProvider>
   );
 }
-
-export default App;
