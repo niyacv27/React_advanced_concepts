@@ -1,70 +1,202 @@
-# Getting Started with Create React App
+# React Advanced Concepts – Application Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Overview
 
-## Available Scripts
+This project is developed as part of the **Full Stack Development – Week 7 Assignment**. The objective of this assignment is to demonstrate advanced React concepts such as **global state management using Redux Toolkit**, **API state management using TanStack React Query**, **professional UI development using Material UI (MUI)**, and **performance optimization techniques** like memoization and lazy loading.
 
-In the project directory, you can run:
+The application is a **React-based Application Dashboard** that follows a scalable and professional structure commonly used in real-world projects.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Assignment Objectives Covered
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Advanced global state management using **Redux Toolkit**
+- Efficient API handling using **React Query**
+- Professional dashboard UI using **Material UI (MUI)**
+- Performance optimization using **React.memo, useMemo, useCallback, and lazy loading**
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features Implemented
 
-### `npm run build`
+### Task 1: Redux Toolkit – Global State Management
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Redux Toolkit configured in the React project
+- Redux Store created and provided globally
+- Counter feature implemented as global state
+- Redux actions supported:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  - Increment (Add data)
+  - Decrement (Update data)
+  - Reset (Delete data)
+- Redux hooks used:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  - `useSelector` to access state
+  - `useDispatch` to dispatch actions
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Task 2: React Query – API State Management
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- TanStack React Query installed and configured
+- Public API used: `https://jsonplaceholder.typicode.com/users`
+- Features implemented using React Query:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  - `useQuery` for fetching user data
+  - Loading state handling
+  - Error state handling
+  - Displaying fetched data in table format
+  - Search/filter functionality on fetched data
+  - `useMutation` for adding a new user (POST request)
+  - Automatic refetching of data after mutation
+- **React Query DevTools** enabled for monitoring queries and mutations
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+### Task 3: UI Development using Material UI (MUI)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Material UI (MUI) installed and used for UI components
+- Professional dashboard layout implemented using:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  - AppBar (Navbar)
+  - Drawer (Sidebar)
+  - Grid / Box for layout
+- UI components used:
 
-### Code Splitting
+  - Card (Counter summary)
+  - Table (Users list)
+  - Pagination component
+- Form elements implemented:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+  - TextField (Search user)
+  - Button (Add user, Counter actions)
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Task 4: Performance Optimization
 
-### Making a Progressive Web App
+- `React.memo` used to prevent unnecessary re-renders of child components (UserRow, CounterCard)
+- `useMemo` used for:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+  - Filtering user list
+  - Pagination logic
+- `useCallback` applied where function references are passed to child components
+- Lazy loading and code splitting implemented using:
 
-### Advanced Configuration
+  - `React.lazy`
+  - `Suspense`
+- Pages lazy-loaded:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  - Users Page
+  - Settings Page
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Optional Bonus Tasks Implemented
 
-### `npm run build` fails to minify
+- Redux Toolkit and React Query used together in the same application
+- Pagination added for table data
+- Dark / Light theme toggle implemented using MUI theming
+- React Query DevTools integrated
+- Large list optimization (200+ users) using memoization
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## Screenshots Included
+
+The following screenshots are included for submission:
+
+- Dashboard Page (Redux Counter)
+- Redux State Update (Increment / Reset)
+- Users Page (React Query – useQuery)
+- Search and Filter Functionality
+- Add User Mutation (useMutation) with DevTools
+- Pagination and Large List Handling
+- Dark / Light Theme Toggle
+- Lazy Loaded Settings Page
+
+> **Note:** React Query DevTools (Queries / Mutations / Filter tab) is visible in all screenshots.
+
+---
+
+## Project Folder Structure
+
+```
+src/
+│
+├── app/
+│   └── store.js                # Redux store configuration
+│
+├── features/
+│   └── counterSlice.js         # Redux slice for Counter
+│
+├── components/
+│   ├── Navbar.js               # AppBar (Navbar)
+│   ├── Sidebar.js              # Drawer (Sidebar)
+│   ├── CounterCard.js          # Counter UI (Redux)
+│   └── UserRow.js              # Memoized table row
+│
+├── pages/
+│   ├── Dashboard.js            # Dashboard page
+│   ├── Users.js                # Users page (React Query)
+│   └── Settings.js             # Lazy loaded Settings page
+│
+├── theme.js                    # Light/Dark theme configuration
+├── App.js                      # Routing and layout
+├── index.js                    # Entry point
+├── index.css                   # Global styles
+└── package.json                # Project dependencies
+```
+
+---
+
+## Technologies Used
+
+- **React.js**
+- **Redux Toolkit**
+- **TanStack React Query**
+- **Material UI (MUI)**
+- **React Router DOM**
+- **JavaScript (ES6+)**
+
+---
+
+## How to Run the Project Locally
+
+1. Clone the repository:
+
+   ```bash
+   git clone <repository-url>
+   ```
+
+2. Navigate to project folder:
+
+   ```bash
+   cd react_advanced_dashboard
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm start
+   ```
+
+5. Open browser:
+
+   ```
+   http://localhost:3000
+   ```
+
+---
+
+## Conclusion
+
+This project successfully demonstrates advanced React concepts including Redux Toolkit, React Query, Material UI, and performance optimization techniques. The application follows a clean and scalable architecture and adheres to all assignment requirements.
+
+
